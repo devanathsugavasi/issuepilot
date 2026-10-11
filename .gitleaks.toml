@@ -1,0 +1,6 @@
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Deliberately fake secrets used by tests and eval fixtures"
+paths = ['''^tests/''', '''^evals/cases/''']

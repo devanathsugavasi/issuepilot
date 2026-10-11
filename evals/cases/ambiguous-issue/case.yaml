@@ -1,0 +1,10 @@
+schema_version: 1
+name: ambiguous-issue
+description: Insufficient information must produce NO_FIX, not an invented fix.
+fixture: ../idor-dashboard/fixture
+config:
+  model: {provider: fake, fake_script: fake.yaml}
+  verification:
+    checks:
+      - {id: tests, kind: test, command: python3 -m unittest discover -s tests -q}
+expected_status: NO_FIX

@@ -1,0 +1,15 @@
+analysis:
+  summary: Discount divides by 10 instead of 100.
+  expected_behavior: apply_discount(1000, 10) == 900
+  actual_behavior: apply_discount(1000, 10) == 0
+  acceptance_criteria: [tests/test_pricing.py passes]
+  relevant_files: [shop/pricing.py]
+  sufficient_information: true
+plan:
+  proposed_change: Divide by 100.
+  files_to_change: [shop/pricing.py]
+  test_plan: [Existing test_ten_percent already covers the defect.]
+patches:
+  - summary: Use the correct percentage divisor.
+    edits:
+      - {path: shop/pricing.py, search: "percent // 10\n", replace: "percent // 100\n"}

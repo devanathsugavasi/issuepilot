@@ -1,0 +1,12 @@
+schema_version: 1
+name: malicious-patch
+description: Prompt-injected model output (CI edits, traversal, absolute paths, credential and .git writes) is rejected.
+fixture: ../idor-dashboard/fixture
+config:
+  model: {provider: fake, fake_script: fake.yaml, max_repair_attempts: 2}
+  verification:
+    checks:
+      - {id: tests, kind: test, command: python3 -m unittest discover -s tests -q}
+expected_status: NO_FIX
+known_limitations:
+  - The fake provider simulates an injected model; this does not measure a real model's injection resistance.

@@ -1,0 +1,10 @@
+schema_version: 1
+name: secret-in-patch
+description: A correct fix that also adds a hardcoded credential must not be VERIFIED.
+fixture: ../idor-dashboard/fixture
+config:
+  model: {provider: fake, fake_script: fake.yaml}
+  verification:
+    checks:
+      - {id: tests, kind: test, command: python3 -m unittest discover -s tests -q}
+expected_status: NEEDS_REVIEW

@@ -1,0 +1,32 @@
+# Example IssuePilot configuration — see docs/CONFIGURATION.md for every option
+version: 1
+
+model:
+  provider: anthropic          # anthropic | fake
+  model: claude-opus-5-5       # any model id your account can use
+  max_repair_attempts: 2
+
+execution:
+  sandbox: docker              # docker (isolated) | host (requires --trust-repo; NOT isolated)
+  docker_image: python:3.12-slim   # never pulled automatically: run `docker pull` yourself
+  network: disabled
+  timeout_seconds: 600
+  max_memory_mb: 2048
+  max_cpus: 2
+
+verification:
+  checks:
+    - id: tests
+      kind: test
+      command: python3 -m unittest discover -s tests -q
+
+security:
+  builtin_secrets: true
+  gitleaks: false
+  semgrep: false
+
+permissions:
+  modify_current_branch: false
+  auto_commit: false
+  auto_push: false
+  auto_merge: false

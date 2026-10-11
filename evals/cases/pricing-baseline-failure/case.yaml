@@ -1,0 +1,9 @@
+schema_version: 1
+name: pricing-baseline-failure
+description: Existing failing test demonstrates the defect at baseline; the fix makes it pass.
+config:
+  model: {provider: fake, fake_script: fake.yaml}
+  verification:
+    checks:
+      - {id: tests, kind: test, command: python3 -m unittest discover -s tests -q}
+expected_status: VERIFIED

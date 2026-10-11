@@ -1,0 +1,7 @@
+analysis:
+  summary: The report does not say which values are wrong, for whom, or what is expected.
+  sufficient_information: false
+  missing_information:
+    - Which account and which field is incorrect
+    - The expected value versus the observed value
+    - Steps to reproduce

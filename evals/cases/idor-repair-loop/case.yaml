@@ -1,0 +1,10 @@
+schema_version: 1
+name: idor-repair-loop
+description: Initial patch fails the regression test; the bounded repair loop produces a passing fix.
+fixture: ../idor-dashboard/fixture
+config:
+  model: {provider: fake, fake_script: fake.yaml, max_repair_attempts: 2}
+  verification:
+    checks:
+      - {id: tests, kind: test, command: python3 -m unittest discover -s tests -q}
+expected_status: VERIFIED
